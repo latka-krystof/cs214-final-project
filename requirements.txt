@@ -1,0 +1,8 @@
+vllm>=0.3.0
+fastapi
+uvicorn
+httpx
+requests
+# Optional: for plotting metrics later
+matplotlib
+pandas
