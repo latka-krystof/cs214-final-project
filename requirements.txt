@@ -3,6 +3,7 @@ fastapi
 uvicorn
 httpx
 requests
+huggingface_hub
 # Optional: for plotting metrics later
 matplotlib
 pandas
