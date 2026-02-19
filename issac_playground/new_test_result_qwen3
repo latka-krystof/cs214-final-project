@@ -1,0 +1,136 @@
+Speculative
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 10
+  Successful          : 10
+  Failed              : 0
+  Wall-clock time     : 13.90s
+  Throughput          : 0.72 req/s
+  Total tokens out    : 1280
+  Token throughput    : 92.1 tok/s
+
+  Latency (seconds):
+    min   : 12.780s
+    p50   : 13.175s
+    p95   : 13.894s
+    p99   : 13.894s
+    max   : 13.894s
+    mean  : 13.176s
+    stdev : 0.372s
+═══════════════════════════════════════════════════════
+
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 300
+  Successful          : 300
+  Failed              : 0
+  Wall-clock time     : 113.63s
+  Throughput          : 2.64 req/s
+  Total tokens out    : 38400
+  Token throughput    : 337.9 tok/s
+
+  Latency (seconds):
+    min   : 14.050s
+    p50   : 18.086s
+    p95   : 22.704s
+    p99   : 23.860s
+    max   : 24.144s
+    mean  : 18.397s
+    stdev : 2.089s
+═══════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 37.02s
+  Throughput          : 2.70 req/s
+  Total tokens out    : 12800
+  Token throughput    : 345.7 tok/s
+
+  Latency (seconds):
+    min   : 14.034s
+    p50   : 17.180s
+    p95   : 20.582s
+    p99   : 22.168s
+    max   : 22.168s
+    mean  : 17.506s
+    stdev : 1.696s
+═══════════════════════════════════════════════════════
+
+
+Main 
+
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 10
+  Successful          : 10
+  Failed              : 0
+  Wall-clock time     : 6.84s
+  Throughput          : 1.46 req/s
+  Total tokens out    : 1280
+  Token throughput    : 187.2 tok/s
+
+  Latency (seconds):
+    min   : 6.829s
+    p50   : 6.836s
+    p95   : 6.837s
+    p99   : 6.837s
+    max   : 6.837s
+    mean  : 6.836s
+    stdev : 0.002s
+═══════════════════════════════════════════════════════
+
+
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 300
+  Successful          : 300
+  Failed              : 0
+  Wall-clock time     : 85.56s
+  Throughput          : 3.51 req/s
+  Total tokens out    : 38400
+  Token throughput    : 448.8 tok/s
+
+  Latency (seconds):
+    min   : 12.998s
+    p50   : 13.601s
+    p95   : 18.162s
+    p99   : 18.165s
+    max   : 18.167s
+    mean  : 14.241s
+    stdev : 1.774s
+═══════════════════════════════════════════════════════
+
+
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 30.11s
+  Throughput          : 3.32 req/s
+  Total tokens out    : 12800
+  Token throughput    : 425.2 tok/s
+
+  Latency (seconds):
+    min   : 13.380s
+    p50   : 14.979s
+    p95   : 16.647s
+    p99   : 16.652s
+    max   : 16.652s
+    mean  : 15.036s
+    stdev : 1.602s
+═══════════════════════════════════════════════════════

@@ -1,0 +1,99 @@
+
+300 Requests:
+
+═══════════════════════════════════════════════════════
+  vLLM 0.6GPU 1 Main Model Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 300
+  Successful          : 300
+  Failed              : 0
+  Wall-clock time     : 64.88s
+  Throughput          : 4.62 req/s
+  Total tokens out    : 30893
+  Token throughput    : 476.1 tok/s
+
+  Latency (seconds):
+    min   : 0.816s
+    p50   : 10.252s
+    p95   : 23.205s
+    p99   : 23.208s
+    max   : 23.208s
+    mean  : 10.179s
+    stdev : 5.401s
+═══════════════════════════════════════════════════════
+
+
+═══════════════════════════════════════════════════════
+  vLLM 0.6GPU Speculative Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 300
+  Successful          : 300
+  Failed              : 0
+  Wall-clock time     : 86.02s
+  Throughput          : 3.49 req/s
+  Total tokens out    : 30912
+  Token throughput    : 359.4 tok/s
+
+  Latency (seconds):
+    min   : 1.308s
+    p50   : 13.622s
+    p95   : 23.844s
+    p99   : 28.512s
+    max   : 32.055s
+    mean  : 13.212s
+    stdev : 5.696s
+═══════════════════════════════════════════════════════
+
+
+
+10 Requests:
+
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 10
+  Successful          : 10
+  Failed              : 0
+  Wall-clock time     : 11.10s
+  Throughput          : 0.90 req/s
+  Total tokens out    : 395
+  Token throughput    : 35.6 tok/s
+
+  Latency (seconds):
+    min   : 4.164s
+    p50   : 4.609s
+    p95   : 11.098s
+    p99   : 11.098s
+    max   : 11.098s
+    mean  : 5.629s
+    stdev : 2.366s
+═══════════════════════════════════════════════════════
+
+
+
+═══════════════════════════════════════════════════════
+  vLLM 0.6GPU Speculative Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 10
+  Successful          : 10
+  Failed              : 0
+  Wall-clock time     : 11.10s
+  Throughput          : 0.90 req/s
+  Total tokens out    : 395
+  Token throughput    : 35.6 tok/s
+
+  Latency (seconds):
+    min   : 4.164s
+    p50   : 4.609s
+    p95   : 11.098s
+    p99   : 11.098s
+    max   : 11.098s
+    mean  : 5.629s
+    stdev : 2.366s
+═══════════════════════════════════════════════════════
+
+
+Spec
+Engine 000: Avg prompt throughput: 37.5 tokens/s, Avg generation throughput: 16.1 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 38.4%
+(APIServer pid=4564) INFO 02-19 20:52:54 [metrics.py:100] SpecDecoding metrics: Mean acceptance length: 3.88, Accepted throughput: 3.32 tokens/s, Drafted throughput: 5.77 tokens/s, Accepted: 115 tokens, Drafted: 200 tokens, Per-position acceptance rate: 0.850, 0.675, 0.550, 0.425, 0.375, Avg Draft acceptance rate: 57.5%

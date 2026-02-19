@@ -14,8 +14,8 @@ from typing import Optional
 
 # ── Config ────────────────────────────────────────────────────────────────────
 DEFAULT_BASE_URL   = "http://localhost:8001"
-DEFAULT_MODEL      = "Qwen/Qwen2.5-3B-Instruct-AWQ"          # change me
-DEFAULT_N_REQUESTS = 300
+DEFAULT_MODEL      = "Qwen/Qwen3-4B-AWQ"          # change me
+DEFAULT_N_REQUESTS = 10
 DEFAULT_CONCURRENCY = 50                        # max simultaneous requests
 DEFAULT_MAX_TOKENS = 128
 
@@ -156,6 +156,8 @@ async def send_request(
                     return Result(index, False, latency, error=str(body))
 
                 tokens = body.get("usage", {}).get("completion_tokens", 0)
+                content = body.get("choices", [{}])[0].get("message", {}).get("content", "")
+                print(f"Prompt: {prompt}\nResponse: {content}\n{'-'*50}\n")
                 return Result(index, True, latency, tokens_generated=tokens)
 
         except Exception as e:
