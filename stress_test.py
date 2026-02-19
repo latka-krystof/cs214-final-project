@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # --- CONFIGURATION ---
-PROXY_URL = "http://localhost:8000/v1/completions"
+PROXY_URL = "http://localhost:8002/v1/completions"
 MODEL_NAME = "Qwen/Qwen2.5-3B-Instruct-AWQ"
 PROMPT = "The future of AI is"
 MAX_TOKENS = 64
