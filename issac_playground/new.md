@@ -2,7 +2,7 @@
 
 pip install vllm-router  
 
-MAIN_MODEL="Qwen/Qwen3-4B-AWQ"
+MAIN_MODEL="Qwen/Qwen3-8B-AWQ"
 DRAFT_MODEL="Qwen/Qwen3-0.6B"
 
 

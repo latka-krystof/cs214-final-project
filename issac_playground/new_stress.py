@@ -14,7 +14,7 @@ from typing import Optional
 
 # ── Config ────────────────────────────────────────────────────────────────────
 DEFAULT_BASE_URL   = "http://localhost:8001"
-DEFAULT_MODEL      = "Qwen/Qwen3-4B-AWQ"          # change me
+DEFAULT_MODEL      = "Qwen/Qwen3-8B-AWQ"          # change me
 DEFAULT_N_REQUESTS = 10
 DEFAULT_CONCURRENCY = 50                        # max simultaneous requests
 DEFAULT_MAX_TOKENS = 128
