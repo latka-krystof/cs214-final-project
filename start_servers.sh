@@ -7,7 +7,7 @@
 # Use START_MODE=standard or START_MODE=speculative to control which one starts.
 # If you have multi-GPU, set CUDA_VISIBLE_DEVICES accordingly.
 
-MAIN_MODEL="Qwen/Qwen3-0.6B"   # Lightweight enough to fit on T4 comfortably
+MAIN_MODEL="Qwen/Qwen3-8B-AWQ"   # Lightweight enough to fit on T4 comfortably
 DRAFT_MODEL="Qwen/Qwen3-0.6B"  # Same model used as draft (or swap for a smaller one)
 
 # --- T4-safe settings ---
