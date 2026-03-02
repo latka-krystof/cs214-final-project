@@ -14,10 +14,10 @@ from typing import Optional
 
 # ── Config ────────────────────────────────────────────────────────────────────
 DEFAULT_BASE_URL   = "http://localhost:8001"
-DEFAULT_MODEL      = "Qwen/Qwen3-8B-AWQ"          # change me
-DEFAULT_N_REQUESTS = 10
-DEFAULT_CONCURRENCY = 50                        # max simultaneous requests
-DEFAULT_MAX_TOKENS = 128
+DEFAULT_MODEL      = "meta-llama/Llama-3.2-3B"          # change me
+DEFAULT_N_REQUESTS = 100
+DEFAULT_CONCURRENCY = 20                        # max simultaneous requests
+DEFAULT_MAX_TOKENS = 1024
 
 # Mix of prompts across categories, lengths, and complexity levels
 PROMPT_POOL = [
@@ -95,6 +95,7 @@ PROMPT_POOL = [
     "What is the difference between a virus and a bacterium?",
     "How does the Internet work at a high level?",
     "What is machine learning and how is it different from traditional programming?",
+    "Write a 600‑word essay about Google",
 
     # ── Opinion / Open-ended ─────────────────────────────────────────────────
     "What are the pros and cons of remote work?",

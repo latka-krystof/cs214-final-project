@@ -2,7 +2,7 @@
 
 pip install vllm-router  
 
-MAIN_MODEL="Qwen/Qwen3-8B-AWQ"
+MAIN_MODEL="Qwen/Qwen3-4B-FP8"
 DRAFT_MODEL="Qwen/Qwen3-0.6B"
 
 
@@ -14,7 +14,6 @@ ________________________________
 echo ">>> Starting Instance A: Main Model on Port 8001..."
 CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server \
     --model $MAIN_MODEL \
-    --quantization awq \
     --gpu-memory-utilization 0.85 \
     --max-model-len 2048 \
     --port 8001 \
@@ -26,9 +25,8 @@ CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server \
 echo ">>> Starting Instance C: SPECULATIVE (Fast but fragile) on Port 8003..."
 CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server \
     --model $MAIN_MODEL \
-    --quantization awq \
     --max-model-len 2048 \
-    --speculative-config "{\"model\": \"$DRAFT_MODEL\", \"num_speculative_tokens\": 2, \"method\": \"draft_model\"}" \
+    --speculative-config "{\"model\": \"$DRAFT_MODEL\", \"num_speculative_tokens\": 5, \"method\": \"draft_model\"}" \
     --gpu-memory-utilization 0.85 \
     --port 8003 \
     --enforce-eager \
