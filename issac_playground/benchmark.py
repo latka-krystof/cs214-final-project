@@ -1,5 +1,5 @@
 """
-vLLM Router Benchmark Script
+vLLM Standard vs Speculative Benchmark Script
 
 1. Run the machines (from start.sh) separately since each of them will take 0.85 gpu
 2. Kill the machines after running benchmark to ensure fair comparison
@@ -26,7 +26,7 @@ Concurrency 10: Speculative wins
 Standard:
 
 ═══════════════════════════════════════════════════════
-  vLLM Router Benchmark Report
+  vLLM Benchmark Report
 ═══════════════════════════════════════════════════════
   Total requests      : 100
   Successful          : 100
@@ -49,7 +49,7 @@ Standard:
 Speculative:
 
 ═══════════════════════════════════════════════════════
-  vLLM Router Benchmark Report
+  vLLM Benchmark Report
 ═══════════════════════════════════════════════════════
   Total requests      : 100
   Successful          : 100
@@ -74,7 +74,7 @@ Concurrency 20: Standard wins
 
 Standard:
 ═══════════════════════════════════════════════════════
-  vLLM Router Benchmark Report
+  vLLM Benchmark Report
 ═══════════════════════════════════════════════════════
   Total requests      : 100
   Successful          : 100
@@ -96,7 +96,7 @@ Standard:
 
 Speuclative:
 ═══════════════════════════════════════════════════════
-  vLLM Router Benchmark Report
+  vLLM Benchmark Report
 ═══════════════════════════════════════════════════════
   Total requests      : 100
   Successful          : 100
@@ -121,7 +121,7 @@ Concurrency 50: Standard wins
 
 Standard:
 ═══════════════════════════════════════════════════════
-  vLLM Router Benchmark Report
+  vLLM Benchmark Report
 ═══════════════════════════════════════════════════════
   Total requests      : 100
   Successful          : 100
@@ -144,7 +144,7 @@ Standard:
 Speuclative:
 
 ═══════════════════════════════════════════════════════
-  vLLM Router Benchmark Report
+  vLLM Benchmark Report
 ═══════════════════════════════════════════════════════
   Total requests      : 100
   Successful          : 100
@@ -413,7 +413,7 @@ def print_report(results: list[Result], wall_time: float):
     total_tokens = sum(r.tokens_generated for r in successes)
 
     print("\n" + "═" * 55)
-    print("  vLLM Router Benchmark Report")
+    print("  vLLM Benchmark Report")
     print("═" * 55)
     print(f"  Total requests      : {len(results)}")
     print(f"  Successful          : {len(successes)}")
@@ -464,7 +464,7 @@ async def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Benchmark a vLLM router endpoint")
+    parser = argparse.ArgumentParser(description="Benchmark a vLLM endpoint")
     parser.add_argument("--base-url",required=True,help="Router base URL (e.g. http://localhost:8001)")
     parser.add_argument("--model",       default=DEFAULT_MODEL,       help="Model name")
     parser.add_argument("-n",            type=int, default=DEFAULT_N_REQUESTS, help="Total requests")
