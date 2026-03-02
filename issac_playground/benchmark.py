@@ -1,6 +1,170 @@
 """
 vLLM Router Benchmark Script
-Sends N requests (default 300) and measures total + per-request latency.
+
+1. Run the machines (from start.sh) separately since each of them will take 0.85 gpu
+2. Kill the machines after running benchmark to ensure fair comparison
+
+BENCHMARK
+Standard: 8001
+Speculative: 8003 
+
+Concurrency 10:
+python benchmark.py --base-url http://localhost:8001 -n 100 --concurrency 10
+python benchmark.py --base-url http://localhost:8003 -n 100 --concurrency 10
+
+Concurrency 20:
+python benchmark.py --base-url http://localhost:8001 -n 100 --concurrency 20
+python benchmark.py --base-url http://localhost:8003 -n 100 --concurrency 20
+
+Concurrency 50:
+python benchmark.py --base-url http://localhost:8001 -n 100 --concurrency 50
+python benchmark.py --base-url http://localhost:8003 -n 100 --concurrency 50    
+
+
+Concurrency 10: Speculative wins
+
+Standard:
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 225.39s
+  Throughput          : 0.44 req/s
+  Total tokens out    : 45784
+  Token throughput    : 203.1 tok/s
+
+  Latency (seconds):
+    min   : 0.800s
+    p50   : 22.647s
+    p95   : 48.299s
+    p99   : 49.245s
+    max   : 49.245s
+    mean  : 21.243s
+    stdev : 13.497s
+═══════════════════════════════════════════════════════
+
+Speculative:
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 170.60s
+  Throughput          : 0.59 req/s
+  Total tokens out    : 38134
+  Token throughput    : 223.5 tok/s
+
+  Latency (seconds):
+    min   : 0.752s
+    p50   : 15.288s
+    p95   : 34.386s
+    p99   : 45.547s
+    max   : 45.547s
+    mean  : 15.668s
+    stdev : 11.005s
+═══════════════════════════════════════════════════════
+
+Concurrency 20: Standard wins
+
+
+Standard:
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 149.17s
+  Throughput          : 0.67 req/s
+  Total tokens out    : 40463
+  Token throughput    : 271.3 tok/s
+
+  Latency (seconds):
+    min   : 0.705s
+    p50   : 28.628s
+    p95   : 55.756s
+    p99   : 67.621s
+    max   : 67.621s
+    mean  : 26.468s
+    stdev : 17.109s
+═══════════════════════════════════════════════════════
+
+Speuclative:
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 156.54s
+  Throughput          : 0.64 req/s
+  Total tokens out    : 39583
+  Token throughput    : 252.9 tok/s
+
+  Latency (seconds):
+    min   : 2.048s
+    p50   : 21.700s
+    p95   : 55.606s
+    p99   : 70.238s
+    max   : 70.238s
+    mean  : 23.716s
+    stdev : 17.360s
+═══════════════════════════════════════════════════════
+
+
+Concurrency 50: Standard wins
+
+Standard:
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 89.23s
+  Throughput          : 1.12 req/s
+  Total tokens out    : 34274
+  Token throughput    : 384.1 tok/s
+
+  Latency (seconds):
+    min   : 0.842s
+    p50   : 22.503s
+    p95   : 80.246s
+    p99   : 86.420s
+    max   : 86.420s
+    mean  : 30.850s
+    stdev : 25.821s
+═══════════════════════════════════════════════════════
+
+Speuclative:
+
+═══════════════════════════════════════════════════════
+  vLLM Router Benchmark Report
+═══════════════════════════════════════════════════════
+  Total requests      : 100
+  Successful          : 100
+  Failed              : 0
+  Wall-clock time     : 96.47s
+  Throughput          : 1.04 req/s
+  Total tokens out    : 33758
+  Token throughput    : 349.9 tok/s
+
+  Latency (seconds):
+    min   : 2.290s
+    p50   : 32.621s
+    p95   : 76.429s
+    p99   : 84.270s
+    max   : 84.270s
+    mean  : 34.541s
+    stdev : 25.306s
+═══════════════════════════════════════════════════════
+
+
 """
 
 import asyncio
@@ -8,13 +172,12 @@ import aiohttp
 import time
 import argparse
 import statistics
-import json
+import random
 from dataclasses import dataclass, field
 from typing import Optional
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DEFAULT_BASE_URL   = "http://localhost:8001"
-DEFAULT_MODEL      = "meta-llama/Llama-3.2-3B"          # change me
+DEFAULT_MODEL      = "meta-llama/Llama-3.2-3B-Instruct"          # change me
 DEFAULT_N_REQUESTS = 100
 DEFAULT_CONCURRENCY = 20                        # max simultaneous requests
 DEFAULT_MAX_TOKENS = 1024
@@ -117,6 +280,83 @@ PROMPT_POOL = [
     "Walk me through how to make a cup of pour-over coffee.",
     "Explain how to set up a Python virtual environment step by step.",
     "How do I write a good resume? Give five actionable tips.",
+
+    # ── 78 additional ────────────────────────────────────────────────
+    "Act as a McKinsey senior partner. Tear apart this business idea: [idea]. Be brutally honest.",
+    "If this startup fails in 2 years, what will have been the top 5 causes?",
+    "Design a moat strategy for this AI product in a highly competitive market.",
+    "How would Amazon enter this industry?",
+    "Build a zero-to-one roadmap for dominating this niche.",
+    "If I wanted to build the Bloomberg Terminal of legal intelligence, what would it look like?",
+    "Design a regulatory-safe AI legal assistant architecture.",
+    "What are the real risks of deploying a legal LLM in production?",
+    "Design a scalable React Native + FastAPI backend architecture for an AI-powered app.",
+    "Refactor this code for production-level reliability: [paste code].",
+    "How would a FAANG engineer structure this repo?",
+    "Rewrite this code as if it needs to support 1 million users.",
+    "Profile this backend for performance bottlenecks.",
+    "Rewrite this for 10x speed.",
+    "What would break at scale?",
+    "Make this code enterprise-grade.",
+    "Rewrite this using SOLID principles.",
+    "Add proper logging, error handling, and observability.",
+    "Explain this using first principles.",
+    "What would Naval Ravikant think about this strategy?",
+    "Analyze this using game theory.",
+    "Apply inversion to this problem.",
+    "What are the second-order consequences?",
+    "Design a 12-month plan to get into FAANG as a high-impact AI product leader.",
+    "What projects would make my GitHub irresistible to recruiters?",
+    "Rewrite my resume to signal top 1% talent.",
+    "If you were a Google hiring manager, what would worry you about my profile?",
+    "How do I become antifragile in tech?",
+    "Turn this idea into a high-performing LinkedIn post.",
+    "Rewrite this in the voice of Paul Graham.",
+    "Make this contrarian and bold.",
+    "Turn this into a Twitter thread.",
+    "Position me as a thought leader in AI x law.",
+    "Ask me 10 uncomfortable questions about this idea.",
+    "Debate me.",
+    "Argue the opposite position.",
+    "Simulate a VC pitch meeting.",
+    "Simulate a skeptical regulator.",
+    "Write a YC-style application answer for this startup.",
+    "What traction metrics matter most for this?",
+    "Design a pitch deck outline.",
+    "What would make this fundable?",
+    "If Sequoia rejected this, why?",
+    "Break this down into assumptions.",
+    "Quantify the TAM realistically.",
+    "Build a back-of-the-envelope model.",
+    "Where are we likely overconfident?",
+    "Stress test this strategy.",
+    "Give me 50 ideas in 3 minutes.",
+    "Generate 100 startup ideas in AI x law.",
+    "List 30 niche markets no one talks about.",
+    "Give me 25 unfair advantages I might have.",
+    "Generate 40 business models.",
+    "Design a daily routine for a future billionaire tech founder.",
+    "What habits compound the most over 10 years?",
+    "Audit my current workflow.",
+    "Design a 90-day deep work sprint.",
+    "How do I think bigger?",
+    "What if this was illegal?",
+    "What if this had to scale to 1 billion users?",
+    "What if this had zero budget?",
+    "What if OpenAI built this?",
+    "What would this look like in 2035?",
+    "Explain C++ memory management like I’m building a high-frequency trading system.",
+    "Explain this concept visually.",
+    "Teach me this using analogies.",
+    "Test my understanding with hard questions.",
+    "Make the strongest case for quitting this.",
+    "Make the strongest case for doubling down.",
+    "What information would change this decision?",
+    "What are we not seeing?",
+    "If this were easy, what would it look like?",
+    "Act as a combination of a YC partner, a constitutional lawyer in Hong Kong, and a FAANG staff engineer. Critique this AI legal assistant architecture for scalability, regulatory risk, and defensibility.",
+    "Respond in brutal truth mode. No motivational fluff. Only strategic insights.",
+    "Break your answer into: Risks / Opportunities / Blind Spots / 10x Move."
 ]
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -138,7 +378,7 @@ async def send_request(
     model: str,
     max_tokens: int,
 ) -> Result:
-    prompt = PROMPT_POOL[index % len(PROMPT_POOL)]
+    prompt = random.choice(PROMPT_POOL)
     payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
@@ -225,7 +465,7 @@ async def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Benchmark a vLLM router endpoint")
-    parser.add_argument("--base-url",    default=DEFAULT_BASE_URL,    help="Router base URL")
+    parser.add_argument("--base-url",required=True,help="Router base URL (e.g. http://localhost:8001)")
     parser.add_argument("--model",       default=DEFAULT_MODEL,       help="Model name")
     parser.add_argument("-n",            type=int, default=DEFAULT_N_REQUESTS, help="Total requests")
     parser.add_argument("--concurrency", type=int, default=DEFAULT_CONCURRENCY, help="Max parallel requests")
