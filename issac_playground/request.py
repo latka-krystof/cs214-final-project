@@ -11,6 +11,7 @@ import argparse
 import asyncio
 import json
 import logging
+import math
 import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -180,34 +181,138 @@ def print_summary(results: list[RequestResult], total_wall: float) -> None:
     def pct(lst, p):
         if not lst:
             return float("nan")
-        lst = sorted(lst)
-        idx = int(len(lst) * p / 100)
-        return lst[min(idx, len(lst) - 1)]
+        s = sorted(lst)
+        idx = int(len(s) * p / 100)
+        return s[min(idx, len(s) - 1)]
 
-    log.info("=" * 60)
+    def mean(lst):
+        return sum(lst) / len(lst) if lst else float("nan")
+
+    def stdev(lst):
+        if len(lst) < 2:
+            return float("nan")
+        m = mean(lst)
+        return math.sqrt(sum((x - m) ** 2 for x in lst) / (len(lst) - 1))
+
+    def minv(lst):
+        return min(lst) if lst else float("nan")
+
+    def maxv(lst):
+        return max(lst) if lst else float("nan")
+
+    # Token stats
+    prompt_tokens     = [r.prompt_tokens     for r in ok if r.prompt_tokens     is not None]
+    completion_tokens = [r.completion_tokens for r in ok if r.completion_tokens is not None]
+    total_prompt      = sum(prompt_tokens)
+    total_completion  = sum(completion_tokens)
+    total_tokens      = total_prompt + total_completion
+
+    # Tokens-per-second per request (output tokens / latency)
+    tps_list = [
+        r.completion_tokens / r.latency
+        for r in ok
+        if r.completion_tokens and r.latency
+    ]
+
+    # Error breakdown
+    error_counts: dict[str, int] = {}
+    for r in failed:
+        key = str(r.status_code or "timeout/exception")
+        error_counts[key] = error_counts.get(key, 0) + 1
+
+    W = 68
+    log.info("=" * W)
     log.info("SUMMARY")
-    log.info("  Total requests   : %d", len(results))
-    log.info("  Successful (200) : %d", len(ok))
-    log.info("  Failed           : %d", len(failed))
-    log.info("  Wall time        : %.2f s", total_wall)
-    log.info("  Throughput       : %.2f req/s", len(results) / total_wall)
-    if latencies:
-        log.info("  Latency (s)  p50=%.3f  p90=%.3f  p99=%.3f  max=%.3f",
-                 pct(latencies, 50), pct(latencies, 90),
-                 pct(latencies, 99), max(latencies))
-    if delays:
-        log.info("  Schedule delay (s)  mean=%.3f  max=%.3f",
-                 sum(delays) / len(delays), max(delays))
+    log.info("-" * W)
 
-    # Per-phase breakdown
+    # ── Overview ──────────────────────────────────────────────────────────────
+    log.info("  OVERVIEW")
+    log.info("    Total requests   : %d", len(results))
+    log.info("    Successful (200) : %d  (%.1f%%)", len(ok),  100 * len(ok)  / max(len(results), 1))
+    log.info("    Failed           : %d  (%.1f%%)", len(failed), 100 * len(failed) / max(len(results), 1))
+    if error_counts:
+        for code, cnt in sorted(error_counts.items()):
+            log.info("      status %-10s : %d", code, cnt)
+    log.info("    Wall time        : %.2f s", total_wall)
+    log.info("    Throughput       : %.2f req/s", len(results) / total_wall)
+
+    # ── Latency ───────────────────────────────────────────────────────────────
+    log.info("-" * W)
+    log.info("  LATENCY (seconds)")
+    if latencies:
+        log.info("    min=%.3f  mean=%.3f  stdev=%.3f  max=%.3f",
+                 minv(latencies), mean(latencies), stdev(latencies), maxv(latencies))
+        log.info("    p25=%.3f  p50=%.3f   p75=%.3f   p90=%.3f  p95=%.3f  p99=%.3f",
+                 pct(latencies, 25), pct(latencies, 50), pct(latencies, 75),
+                 pct(latencies, 90), pct(latencies, 95), pct(latencies, 99))
+    else:
+        log.info("    (no successful requests)")
+
+    # ── Token stats ───────────────────────────────────────────────────────────
+    log.info("-" * W)
+    log.info("  TOKEN USAGE")
+    if prompt_tokens:
+        log.info("    Prompt     total=%-7d  mean=%.1f  min=%d  max=%d",
+                 total_prompt, mean(prompt_tokens), int(minv(prompt_tokens)), int(maxv(prompt_tokens)))
+    if completion_tokens:
+        log.info("    Completion total=%-7d  mean=%.1f  min=%d  max=%d",
+                 total_completion, mean(completion_tokens), int(minv(completion_tokens)), int(maxv(completion_tokens)))
+    if total_tokens:
+        log.info("    Grand total tokens : %d", total_tokens)
+        log.info("    Aggregate tok/s    : %.1f  (completion tokens / wall time)", total_completion / total_wall)
+    if tps_list:
+        log.info("    Per-req tok/s  mean=%.1f  p50=%.1f  p90=%.1f  max=%.1f",
+                 mean(tps_list), pct(tps_list, 50), pct(tps_list, 90), maxv(tps_list))
+
+    # ── Schedule fidelity ─────────────────────────────────────────────────────
+    log.info("-" * W)
+    log.info("  SCHEDULE FIDELITY (delay vs target arrival)")
+    if delays:
+        log.info("    mean=%.3f s  stdev=%.3f s  p90=%.3f s  max=%.3f s",
+                 mean(delays), stdev(delays), pct(delays, 90), maxv(delays))
+        late = [d for d in delays if d > 0.05]
+        log.info("    Requests >50 ms late : %d  (%.1f%%)", len(late), 100 * len(late) / len(delays))
+
+    # ── Per-phase breakdown ───────────────────────────────────────────────────
+    log.info("-" * W)
+    log.info("  PER-PHASE BREAKDOWN")
     phases: dict[str, list] = {}
     for r in ok:
-        phases.setdefault(r.phase or "unknown", []).append(r.latency)
+        phases.setdefault(r.phase or "unknown", []).append(r)
+
     if phases:
-        log.info("  Per-phase p50 latency:")
-        for ph, lats in sorted(phases.items()):
-            log.info("    %-20s  %d req  p50=%.3f s", ph, len(lats), pct(lats, 50))
-    log.info("=" * 60)
+        hdr = f"  {'Phase':<20}  {'Req':>4}  {'mean':>7}  {'p50':>7}  {'p90':>7}  {'p99':>7}  {'max':>7}  {'tok/s':>6}"
+        log.info(hdr)
+        log.info("  " + "-" * (len(hdr) - 2))
+        for ph, reqs in sorted(phases.items()):
+            lats  = [r.latency for r in reqs if r.latency]
+            tps_p = [r.completion_tokens / r.latency for r in reqs
+                     if r.completion_tokens and r.latency]
+            log.info(
+                "  %-20s  %4d  %7.3f  %7.3f  %7.3f  %7.3f  %7.3f  %6.1f",
+                ph, len(reqs),
+                mean(lats), pct(lats, 50), pct(lats, 90), pct(lats, 99), maxv(lats),
+                mean(tps_p) if tps_p else float("nan"),
+            )
+
+    # ── Per-type breakdown (if request_type field is populated) ──────────────
+    types: dict[str, list] = {}
+    for r in ok:
+        if r.request_type:
+            types.setdefault(r.request_type, []).append(r)
+
+    if len(types) > 1:
+        log.info("-" * W)
+        log.info("  PER-TYPE BREAKDOWN")
+        hdr = f"  {'Type':<20}  {'Req':>4}  {'mean':>7}  {'p50':>7}  {'p90':>7}  {'max':>7}"
+        log.info(hdr)
+        log.info("  " + "-" * (len(hdr) - 2))
+        for tp, reqs in sorted(types.items()):
+            lats = [r.latency for r in reqs if r.latency]
+            log.info("  %-20s  %4d  %7.3f  %7.3f  %7.3f  %7.3f",
+                     tp, len(reqs), mean(lats), pct(lats, 50), pct(lats, 90), maxv(lats))
+
+    log.info("=" * W)
 
 
 # ---------------------------------------------------------------------------
