@@ -54,19 +54,9 @@ async def smart_route(request: Request):
 
     # Print current counters
     print(f"[INFO] Speculative count: {spec_count}, Standard count: {std_count}")
-
-    start = time.time()
     try:
         response = await client.post(target_url, json=payload)
-        duration = time.time() - start
-
-        headers = {
-            "X-System-Mode":  mode,
-            "X-Spec-Count":   str(spec_count),
-            "X-Std-Count":    str(std_count),
-            "X-Process-Time": f"{duration:.4f}",
-        }
-        return JSONResponse(response.json(), status_code=response.status_code, headers=headers)
+        return JSONResponse(response.json(), status_code=response.status_code)
 
     except httpx.RequestError as exc:
         return JSONResponse({"error": f"Backend failed: {exc}"}, status_code=502)
@@ -92,4 +82,3 @@ async def get_stats():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("new_router:app", host="0.0.0.0", port=8000, reload=True)
-# Run with: uvicorn proxy:app --port 8000 --workers 1

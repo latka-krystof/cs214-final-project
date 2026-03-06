@@ -4,7 +4,10 @@ Replay vllm requests from a JSON trace file, firing each request
 at its scheduled arrival_time relative to the start of the run.
 
 Usage:
+    Main experiment:
     python request.py --input dataset.json --model "meta-llama/Llama-3.2-3B-Instruct" --endpoint http://localhost:8000/v1/chat/completions 
+    One Spec machine only:
+    python request.py --input dataset.json --model "meta-llama/Llama-3.2-3B-Instruct" --endpoint http://localhost:8001/v1/chat/completions 
 """
 
 import argparse

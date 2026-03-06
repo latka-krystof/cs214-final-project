@@ -1,0 +1,1855 @@
+{
+  "metadata": {
+    "total_requests": 200,
+    "spec_requests": 95,
+    "std_requests": 105,
+    "duration_s": 60,
+    "duration_min": 1.0,
+    "phases": [
+      [
+        0,
+        5,
+        10,
+        "low_load"
+      ],
+      [
+        5,
+        10,
+        20,
+        "ramp_up"
+      ],
+      [
+        10,
+        15,
+        54,
+        "burst_1"
+      ],
+      [
+        15,
+        30,
+        20,
+        "recovery_1"
+      ],
+      [
+        30,
+        35,
+        16,
+        "steady"
+      ],
+      [
+        35,
+        40,
+        60,
+        "burst_2"
+      ],
+      [
+        40,
+        60,
+        20,
+        "cool_down"
+      ]
+    ]
+  },
+  "requests": [
+    {
+      "request_id": 0,
+      "arrival_time": 0.235,
+      "prompt": "In one sentence, what would a pirate say about machine learning?",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 1,
+      "arrival_time": 1.74,
+      "prompt": "Invent a cocktail named after a sorting algorithm. Name and one-sentence description.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 2,
+      "arrival_time": 2.398,
+      "prompt": "Repeat '0x00' exactly 120 times separated by spaces.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 3,
+      "arrival_time": 2.5,
+      "prompt": "Write a LinkedIn post from the perspective of a medieval blacksmith.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 4,
+      "arrival_time": 2.855,
+      "prompt": "Write 50 Python assert statements: assert result_N == expected_N, 'Test N failed'",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 5,
+      "arrival_time": 2.939,
+      "prompt": "Write 'PASS' exactly 100 times, one per line.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 6,
+      "arrival_time": 3.024,
+      "prompt": "Write a Python list comprehension expanding to 100 elements, then print each.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 7,
+      "arrival_time": 3.054,
+      "prompt": "What would a coral reef's Airbnb listing say? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 8,
+      "arrival_time": 4.06,
+      "prompt": "Generate 50 test function names: def test_feature_N_returns_expected_value_N():",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 9,
+      "arrival_time": 4.519,
+      "prompt": "If nostalgia were a piece of furniture, what would it be? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "low_load"
+    },
+    {
+      "request_id": 10,
+      "arrival_time": 5.033,
+      "prompt": "Generate 40 UUID-like strings: xxxxxxxx-xxxx-4xxx-yxxx-N where N is sequential.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 11,
+      "arrival_time": 5.203,
+      "prompt": "Repeat the word 'hello' exactly 200 times separated by spaces. Nothing else.",
+      "max_tokens": 512,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 12,
+      "arrival_time": 5.212,
+      "prompt": "What would Plato say about TikTok? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 13,
+      "arrival_time": 5.812,
+      "prompt": "Describe the sound of the number 7. One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 14,
+      "arrival_time": 5.833,
+      "prompt": "Write the squares of integers from 1 to 80, one per line as: N^2 = M.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 15,
+      "arrival_time": 5.887,
+      "prompt": "Describe the sound of the number 7. One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 16,
+      "arrival_time": 6.159,
+      "prompt": "Write 50 cron job entries, one per line: */N * * * * /usr/bin/job_N.sh",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 17,
+      "arrival_time": 6.252,
+      "prompt": "Write a .env file with 50 environment variables: VAR_N=value_N where N increments.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 18,
+      "arrival_time": 6.436,
+      "prompt": "Write a haiku about debugging code at 3am.",
+      "max_tokens": 40,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 19,
+      "arrival_time": 6.633,
+      "prompt": "Write a LinkedIn post from the perspective of a medieval blacksmith.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 20,
+      "arrival_time": 6.667,
+      "prompt": "Write 50 cron job entries, one per line: */N * * * * /usr/bin/job_N.sh",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 21,
+      "arrival_time": 6.685,
+      "prompt": "Write a JSON array of 40 objects, each with fields: id (int), status (string 'active').",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 22,
+      "arrival_time": 7.5,
+      "prompt": "Write a performance review for the sun. Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 23,
+      "arrival_time": 7.558,
+      "prompt": "If boredom were a texture, what would it feel like? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 24,
+      "arrival_time": 7.931,
+      "prompt": "What is the speed of light in meters per second?",
+      "max_tokens": 20,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 25,
+      "arrival_time": 8.333,
+      "prompt": "Write a Python class with 15 methods. Each method is named process_step_N and prints its name.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 26,
+      "arrival_time": 8.632,
+      "prompt": "Write a JSON array of 40 objects, each with fields: id (int), status (string 'active').",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 27,
+      "arrival_time": 9.167,
+      "prompt": "What is the plot of a telenovela set inside a compiler? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 28,
+      "arrival_time": 9.195,
+      "prompt": "Describe the weight of a memory. One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 29,
+      "arrival_time": 9.423,
+      "prompt": "Write 40 error messages: 'ERROR [2024-01-N]: Module N failed with code N'",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "ramp_up"
+    },
+    {
+      "request_id": 30,
+      "arrival_time": 10.153,
+      "prompt": "What would Plato say about TikTok? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 31,
+      "arrival_time": 10.362,
+      "prompt": "Write the squares of integers from 1 to 80, one per line as: N^2 = M.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 32,
+      "arrival_time": 10.398,
+      "prompt": "What year was the first iPhone released?",
+      "max_tokens": 10,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 33,
+      "arrival_time": 10.408,
+      "prompt": "Name three programming languages invented before 1980.",
+      "max_tokens": 40,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 34,
+      "arrival_time": 10.432,
+      "prompt": "Write 40 error messages: 'ERROR [2024-01-N]: Module N failed with code N'",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 35,
+      "arrival_time": 10.484,
+      "prompt": "Write the NATO phonetic alphabet 4 times, one letter per line each time.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 36,
+      "arrival_time": 10.642,
+      "prompt": "Write a bash for loop from 1 to 100 that echoes 'Processing file N of 100'.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 37,
+      "arrival_time": 10.824,
+      "prompt": "Write 40 error messages: 'ERROR [2024-01-N]: Module N failed with code N'",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 38,
+      "arrival_time": 10.825,
+      "prompt": "What is the plot of a telenovela set inside a compiler? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 39,
+      "arrival_time": 10.891,
+      "prompt": "What is the time complexity of quicksort in the average case?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 40,
+      "arrival_time": 10.941,
+      "prompt": "What is the plot of a telenovela set inside a compiler? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 41,
+      "arrival_time": 10.964,
+      "prompt": "What color is Wednesday? One sentence.",
+      "max_tokens": 40,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 42,
+      "arrival_time": 10.976,
+      "prompt": "Repeat the string 'null' exactly 200 times separated by commas.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 43,
+      "arrival_time": 11.014,
+      "prompt": "Write 50 git commit messages: 'fix(module-N): resolve issue N in component N'",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 44,
+      "arrival_time": 11.279,
+      "prompt": "What color is Wednesday? One sentence.",
+      "max_tokens": 40,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 45,
+      "arrival_time": 11.316,
+      "prompt": "Write 40 Python import statements importing module_1 through module_40.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 46,
+      "arrival_time": 11.383,
+      "prompt": "Generate 50 test function names: def test_feature_N_returns_expected_value_N():",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 47,
+      "arrival_time": 11.496,
+      "prompt": "Print a Fibonacci sequence up to the 60th term, one number per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 48,
+      "arrival_time": 11.538,
+      "prompt": "List 80 server hostnames: server-001.prod.example.com through server-080.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 49,
+      "arrival_time": 11.868,
+      "prompt": "What does CPU stand for?",
+      "max_tokens": 15,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 50,
+      "arrival_time": 12.172,
+      "prompt": "Write a one-sentence Yelp review of the concept of time.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 51,
+      "arrival_time": 12.199,
+      "prompt": "Write the multiplication table for 9 from 9x1 to 9x40, one equation per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 52,
+      "arrival_time": 12.262,
+      "prompt": "What is the worst superpower to have in a library? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 53,
+      "arrival_time": 12.295,
+      "prompt": "What would a robot's midlife crisis look like? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 54,
+      "arrival_time": 12.327,
+      "prompt": "Write the worst possible fortune cookie message.",
+      "max_tokens": 30,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 55,
+      "arrival_time": 12.33,
+      "prompt": "List the first 100 even numbers, one per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 56,
+      "arrival_time": 12.417,
+      "prompt": "Describe ambition as if it were a weather pattern.",
+      "max_tokens": 60,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 57,
+      "arrival_time": 12.482,
+      "prompt": "Describe the weight of a memory. One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 58,
+      "arrival_time": 12.487,
+      "prompt": "Write a bash for loop from 1 to 100 that echoes 'Processing file N of 100'.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 59,
+      "arrival_time": 12.517,
+      "prompt": "What would a coral reef's Airbnb listing say? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 60,
+      "arrival_time": 12.738,
+      "prompt": "Give me a one-sentence tagline for a startup that sells underwater drones.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 61,
+      "arrival_time": 12.763,
+      "prompt": "Write the worst possible fortune cookie message.",
+      "max_tokens": 30,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 62,
+      "arrival_time": 12.778,
+      "prompt": "Write a LinkedIn post from the perspective of a medieval blacksmith.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 63,
+      "arrival_time": 12.84,
+      "prompt": "What is the time complexity of quicksort in the average case?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 64,
+      "arrival_time": 13.233,
+      "prompt": "Write the worst possible fortune cookie message.",
+      "max_tokens": 30,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 65,
+      "arrival_time": 13.259,
+      "prompt": "List the first 100 even numbers, one per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 66,
+      "arrival_time": 13.362,
+      "prompt": "Write the NATO phonetic alphabet 4 times, one letter per line each time.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 67,
+      "arrival_time": 13.495,
+      "prompt": "Write the opening line of a nature documentary about office printers.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 68,
+      "arrival_time": 13.52,
+      "prompt": "Who wrote the TCP/IP protocol?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 69,
+      "arrival_time": 13.641,
+      "prompt": "Repeat '0x00' exactly 120 times separated by spaces.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 70,
+      "arrival_time": 13.683,
+      "prompt": "Write a 2-sentence weather forecast for a city that only exists in dreams.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 71,
+      "arrival_time": 13.776,
+      "prompt": "What would a GPS say if it developed existential dread? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 72,
+      "arrival_time": 13.869,
+      "prompt": "Describe silence using only food metaphors. One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 73,
+      "arrival_time": 13.94,
+      "prompt": "List the first 100 even numbers, one per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 74,
+      "arrival_time": 13.948,
+      "prompt": "What is the time complexity of quicksort in the average case?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 75,
+      "arrival_time": 14.115,
+      "prompt": "Give me a one-sentence tagline for a startup that sells underwater drones.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 76,
+      "arrival_time": 14.151,
+      "prompt": "Explain blockchain to a golden retriever. One sentence.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 77,
+      "arrival_time": 14.17,
+      "prompt": "Generate 40 lines of /etc/hosts entries: 192.168.1.N hostname-N.local",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 78,
+      "arrival_time": 14.174,
+      "prompt": "Write a 2-sentence weather forecast for a city that only exists in dreams.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 79,
+      "arrival_time": 14.257,
+      "prompt": "List all powers of 2 from 2^1 to 2^30, one per line as: 2^N = M.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 80,
+      "arrival_time": 14.362,
+      "prompt": "What would a robot's midlife crisis look like? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 81,
+      "arrival_time": 14.363,
+      "prompt": "Write 40 Python import statements importing module_1 through module_40.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 82,
+      "arrival_time": 14.43,
+      "prompt": "Who wrote the TCP/IP protocol?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 83,
+      "arrival_time": 14.454,
+      "prompt": "What is the worst superpower to have in a library? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_1"
+    },
+    {
+      "request_id": 84,
+      "arrival_time": 16.451,
+      "prompt": "Write 50 JavaScript console.log statements: console.log('Step N:', result_N);",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 85,
+      "arrival_time": 17.363,
+      "prompt": "What would Plato say about TikTok? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 86,
+      "arrival_time": 17.845,
+      "prompt": "Write 50 ticket IDs and titles: PROJ-N: Fix bug in module N",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 87,
+      "arrival_time": 17.922,
+      "prompt": "Write the squares of integers from 1 to 80, one per line as: N^2 = M.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 88,
+      "arrival_time": 18.43,
+      "prompt": "Who wrote the TCP/IP protocol?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 89,
+      "arrival_time": 18.911,
+      "prompt": "Write a 2-sentence legal disclaimer for a time machine rental service.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 90,
+      "arrival_time": 19.053,
+      "prompt": "What does the color blue taste like on a rainy Tuesday? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 91,
+      "arrival_time": 19.48,
+      "prompt": "Name three programming languages invented before 1980.",
+      "max_tokens": 40,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 92,
+      "arrival_time": 19.861,
+      "prompt": "Write 30 HTML list items: <li>Item N: Description of item N</li>",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 93,
+      "arrival_time": 20.579,
+      "prompt": "List all powers of 2 from 2^1 to 2^30, one per line as: 2^N = M.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 94,
+      "arrival_time": 21.335,
+      "prompt": "Generate 50 lines of nginx access log entries in standard format with sequential IPs.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 95,
+      "arrival_time": 21.37,
+      "prompt": "List 80 server hostnames: server-001.prod.example.com through server-080.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 96,
+      "arrival_time": 21.722,
+      "prompt": "Write the multiplication table for 9 from 9x1 to 9x40, one equation per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 97,
+      "arrival_time": 22.459,
+      "prompt": "List all 12 months with the number of days each has, repeated 5 times total.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 98,
+      "arrival_time": 22.984,
+      "prompt": "What is the plot of a telenovela set inside a compiler? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 99,
+      "arrival_time": 24.44,
+      "prompt": "Write the phrase 'the quick brown fox' exactly 60 times, each on its own line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 100,
+      "arrival_time": 25.246,
+      "prompt": "Describe the taste of nostalgia in one sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 101,
+      "arrival_time": 25.379,
+      "prompt": "What life advice would a very old tortoise give a mayfly? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 102,
+      "arrival_time": 25.434,
+      "prompt": "Describe quantum entanglement using only breakfast food metaphors.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 103,
+      "arrival_time": 26.205,
+      "prompt": "Name the four noble gases.",
+      "max_tokens": 25,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "recovery_1"
+    },
+    {
+      "request_id": 104,
+      "arrival_time": 30.108,
+      "prompt": "Describe photosynthesis as a heated political debate. One sentence.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 105,
+      "arrival_time": 30.233,
+      "prompt": "Invent a cocktail named after a sorting algorithm. Name and one-sentence description.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 106,
+      "arrival_time": 30.582,
+      "prompt": "If nostalgia were a piece of furniture, what would it be? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 107,
+      "arrival_time": 31.018,
+      "prompt": "Repeat '0x00' exactly 120 times separated by spaces.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 108,
+      "arrival_time": 31.508,
+      "prompt": "What does d\u00e9j\u00e0 vu smell like? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 109,
+      "arrival_time": 31.995,
+      "prompt": "Write a bash for loop from 1 to 100 that echoes 'Processing file N of 100'.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 110,
+      "arrival_time": 32.025,
+      "prompt": "Suggest a name for a coffee shop inside a library. One name only.",
+      "max_tokens": 20,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 111,
+      "arrival_time": 32.238,
+      "prompt": "Name three programming languages invented before 1980.",
+      "max_tokens": 40,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 112,
+      "arrival_time": 32.257,
+      "prompt": "Generate a markdown table with columns ID, Name, Score, Grade. Fill 40 rows sequentially.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 113,
+      "arrival_time": 32.506,
+      "prompt": "Invent a new word and define it in one sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 114,
+      "arrival_time": 32.688,
+      "prompt": "Print every multiple of 3 from 3 to 300, one per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 115,
+      "arrival_time": 33.371,
+      "prompt": "What is the worst superpower to have in a library? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "steady"
+    },
+    {
+      "request_id": 116,
+      "arrival_time": 33.506,
+      "prompt": "Generate a CSV with columns id,name,value. Fill 80 rows with sequential data.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 117,
+      "arrival_time": 33.545,
+      "prompt": "Repeat the string 'null' exactly 200 times separated by commas.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 118,
+      "arrival_time": 33.594,
+      "prompt": "List 80 server hostnames: server-001.prod.example.com through server-080.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 119,
+      "arrival_time": 34.041,
+      "prompt": "Generate 50 test function names: def test_feature_N_returns_expected_value_N():",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "steady"
+    },
+    {
+      "request_id": 120,
+      "arrival_time": 35.083,
+      "prompt": "Give me a one-sentence tagline for a startup that sells underwater drones.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 121,
+      "arrival_time": 35.182,
+      "prompt": "Who wrote the TCP/IP protocol?",
+      "max_tokens": 30,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 122,
+      "arrival_time": 35.232,
+      "prompt": "What would Plato say about TikTok? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 123,
+      "arrival_time": 35.312,
+      "prompt": "Write 50 JavaScript console.log statements: console.log('Step N:', result_N);",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 124,
+      "arrival_time": 35.315,
+      "prompt": "Generate a markdown table with columns ID, Name, Score, Grade. Fill 40 rows sequentially.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 125,
+      "arrival_time": 35.388,
+      "prompt": "What would Plato say about TikTok? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 126,
+      "arrival_time": 35.581,
+      "prompt": "Write 50 cron job entries, one per line: */N * * * * /usr/bin/job_N.sh",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 127,
+      "arrival_time": 35.585,
+      "prompt": "Write a bash for loop from 1 to 100 that echoes 'Processing file N of 100'.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 128,
+      "arrival_time": 35.612,
+      "prompt": "List all 50 US states alphabetically, one per line, preceded by their number.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 129,
+      "arrival_time": 35.625,
+      "prompt": "What would a coral reef's Airbnb listing say? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 130,
+      "arrival_time": 35.862,
+      "prompt": "Explain blockchain to a golden retriever. One sentence.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 131,
+      "arrival_time": 35.938,
+      "prompt": "Write a JSON array of 40 objects, each with fields: id (int), status (string 'active').",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 132,
+      "arrival_time": 36.047,
+      "prompt": "Repeat 'ping 192.168.1.1' exactly 80 times, one per line.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 133,
+      "arrival_time": 36.097,
+      "prompt": "Write a LinkedIn post from the perspective of a medieval blacksmith.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 134,
+      "arrival_time": 36.178,
+      "prompt": "Write a YAML list of 60 items: - item_N: value_N where N increments.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 135,
+      "arrival_time": 36.205,
+      "prompt": "Generate 40 UUID-like strings: xxxxxxxx-xxxx-4xxx-yxxx-N where N is sequential.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 136,
+      "arrival_time": 36.222,
+      "prompt": "Write 30 HTML list items: <li>Item N: Description of item N</li>",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 137,
+      "arrival_time": 36.25,
+      "prompt": "Write a Python list comprehension expanding to 100 elements, then print each.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 138,
+      "arrival_time": 36.274,
+      "prompt": "List the first 100 odd numbers, one per line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 139,
+      "arrival_time": 36.311,
+      "prompt": "Repeat the string 'null' exactly 200 times separated by commas.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 140,
+      "arrival_time": 36.384,
+      "prompt": "Invent a cocktail named after a sorting algorithm. Name and one-sentence description.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 141,
+      "arrival_time": 36.39,
+      "prompt": "Write 50 git commit messages: 'fix(module-N): resolve issue N in component N'",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 142,
+      "arrival_time": 36.562,
+      "prompt": "Write 50 ticket IDs and titles: PROJ-N: Fix bug in module N",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 143,
+      "arrival_time": 36.696,
+      "prompt": "Write 'PASS' exactly 100 times, one per line.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 144,
+      "arrival_time": 36.875,
+      "prompt": "Generate 40 UUID-like strings: xxxxxxxx-xxxx-4xxx-yxxx-N where N is sequential.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 145,
+      "arrival_time": 37.053,
+      "prompt": "What color is Wednesday? One sentence.",
+      "max_tokens": 40,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 146,
+      "arrival_time": 37.153,
+      "prompt": "Describe quantum entanglement using only breakfast food metaphors.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 147,
+      "arrival_time": 37.188,
+      "prompt": "What color is Wednesday? One sentence.",
+      "max_tokens": 40,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 148,
+      "arrival_time": 37.217,
+      "prompt": "Generate a markdown table with columns ID, Name, Score, Grade. Fill 40 rows sequentially.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 149,
+      "arrival_time": 37.247,
+      "prompt": "Generate 50 test function names: def test_feature_N_returns_expected_value_N():",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 150,
+      "arrival_time": 37.388,
+      "prompt": "Write a YAML list of 60 items: - item_N: value_N where N increments.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 151,
+      "arrival_time": 37.484,
+      "prompt": "Describe the taste of nostalgia in one sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 152,
+      "arrival_time": 37.498,
+      "prompt": "List 60 API endpoint paths: /api/v1/resource/N/subresource/N",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 153,
+      "arrival_time": 37.5,
+      "prompt": "Invent a new word and define it in one sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 154,
+      "arrival_time": 37.7,
+      "prompt": "Write the squares of integers from 1 to 80, one per line as: N^2 = M.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 155,
+      "arrival_time": 37.812,
+      "prompt": "What is the worst superpower to have in a library? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 156,
+      "arrival_time": 37.844,
+      "prompt": "Describe the taste of nostalgia in one sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 157,
+      "arrival_time": 38.093,
+      "prompt": "If boredom were a texture, what would it feel like? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 158,
+      "arrival_time": 38.125,
+      "prompt": "Write 40 SQL INSERT statements into a users table with sequential id, name_N, email_N.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 159,
+      "arrival_time": 38.201,
+      "prompt": "What is the speed of light in meters per second?",
+      "max_tokens": 20,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 160,
+      "arrival_time": 38.28,
+      "prompt": "Generate 50 test function names: def test_feature_N_returns_expected_value_N():",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 161,
+      "arrival_time": 38.326,
+      "prompt": "What does HTTP stand for?",
+      "max_tokens": 15,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 162,
+      "arrival_time": 38.438,
+      "prompt": "Write a 2-sentence weather forecast for a city that only exists in dreams.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 163,
+      "arrival_time": 38.55,
+      "prompt": "Invent a new word and define it in one sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 164,
+      "arrival_time": 38.718,
+      "prompt": "What is the worst superpower to have in a library? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 165,
+      "arrival_time": 38.722,
+      "prompt": "Repeat '0x00' exactly 120 times separated by spaces.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 166,
+      "arrival_time": 38.724,
+      "prompt": "Describe silence using only food metaphors. One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 167,
+      "arrival_time": 38.75,
+      "prompt": "Write 50 ticket IDs and titles: PROJ-N: Fix bug in module N",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 168,
+      "arrival_time": 38.763,
+      "prompt": "Generate 50 lines of nginx access log entries in standard format with sequential IPs.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 169,
+      "arrival_time": 38.902,
+      "prompt": "Write 40 error messages: 'ERROR [2024-01-N]: Module N failed with code N'",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 170,
+      "arrival_time": 39.062,
+      "prompt": "What would a GPS say if it developed existential dread? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 171,
+      "arrival_time": 39.266,
+      "prompt": "Repeat 'ping 192.168.1.1' exactly 80 times, one per line.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 172,
+      "arrival_time": 39.279,
+      "prompt": "Write 50 Python assert statements: assert result_N == expected_N, 'Test N failed'",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 173,
+      "arrival_time": 39.354,
+      "prompt": "Write a haiku about debugging code at 3am.",
+      "max_tokens": 40,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 174,
+      "arrival_time": 39.375,
+      "prompt": "Print integers from 1 to 150, one per line, no other text.",
+      "max_tokens": 512,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 175,
+      "arrival_time": 39.394,
+      "prompt": "Write the opening line of a nature documentary about office printers.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 176,
+      "arrival_time": 39.686,
+      "prompt": "Write 40 SQL INSERT statements into a users table with sequential id, name_N, email_N.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 177,
+      "arrival_time": 39.688,
+      "prompt": "Describe ambition as if it were a weather pattern.",
+      "max_tokens": 60,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 178,
+      "arrival_time": 39.84,
+      "prompt": "Write the worst possible fortune cookie message.",
+      "max_tokens": 30,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 179,
+      "arrival_time": 39.992,
+      "prompt": "List all 50 US states alphabetically, one per line, preceded by their number.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "burst_2"
+    },
+    {
+      "request_id": 180,
+      "arrival_time": 42.786,
+      "prompt": "Write a LinkedIn post from the perspective of a medieval blacksmith.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 181,
+      "arrival_time": 42.986,
+      "prompt": "Generate 40 lines of /etc/hosts entries: 192.168.1.N hostname-N.local",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 182,
+      "arrival_time": 43.055,
+      "prompt": "Describe silence using only food metaphors. One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 183,
+      "arrival_time": 44.406,
+      "prompt": "Write the phrase 'the quick brown fox' exactly 60 times, each on its own line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 184,
+      "arrival_time": 45.261,
+      "prompt": "Write the phrase 'the quick brown fox' exactly 60 times, each on its own line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 185,
+      "arrival_time": 47.105,
+      "prompt": "Describe quantum entanglement using only breakfast food metaphors.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 186,
+      "arrival_time": 47.255,
+      "prompt": "What does HTTP stand for?",
+      "max_tokens": 15,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 187,
+      "arrival_time": 48.841,
+      "prompt": "List 80 server hostnames: server-001.prod.example.com through server-080.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 188,
+      "arrival_time": 49.067,
+      "prompt": "If nostalgia were a piece of furniture, what would it be? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 189,
+      "arrival_time": 49.245,
+      "prompt": "What does CPU stand for?",
+      "max_tokens": 15,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 190,
+      "arrival_time": 49.425,
+      "prompt": "List all powers of 2 from 2^1 to 2^30, one per line as: 2^N = M.",
+      "max_tokens": 350,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 191,
+      "arrival_time": 51.11,
+      "prompt": "Invent a name and definition for the fear of slightly damp socks.",
+      "max_tokens": 70,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 192,
+      "arrival_time": 52.204,
+      "prompt": "In one sentence, what would a pirate say about machine learning?",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 193,
+      "arrival_time": 52.944,
+      "prompt": "Generate 50 lines of nginx access log entries in standard format with sequential IPs.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 194,
+      "arrival_time": 53.389,
+      "prompt": "If nostalgia were a piece of furniture, what would it be? One sentence.",
+      "max_tokens": 50,
+      "temperature": 1.2,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 195,
+      "arrival_time": 55.486,
+      "prompt": "What does CPU stand for?",
+      "max_tokens": 15,
+      "temperature": 0.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 196,
+      "arrival_time": 55.984,
+      "prompt": "What life advice would a very old tortoise give a mayfly? One sentence.",
+      "max_tokens": 60,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 197,
+      "arrival_time": 57.68,
+      "prompt": "List all 50 US states alphabetically, one per line, preceded by their number.",
+      "max_tokens": 300,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 198,
+      "arrival_time": 58.259,
+      "prompt": "Write the phrase 'the quick brown fox' exactly 60 times, each on its own line.",
+      "max_tokens": 400,
+      "temperature": 0.0,
+      "request_type": "spec",
+      "phase": "cool_down"
+    },
+    {
+      "request_id": 199,
+      "arrival_time": 58.732,
+      "prompt": "What is the plot of a telenovela set inside a compiler? Two sentences.",
+      "max_tokens": 80,
+      "temperature": 1.0,
+      "request_type": "std",
+      "phase": "cool_down"
+    }
+  ]
+}
