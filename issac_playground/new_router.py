@@ -80,5 +80,7 @@ async def get_stats():
         "std_count":             std_count,
         "concurrency_threshold": CONCURRENCY_THRESHOLD,
     }
-
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("new_router:app", host="0.0.0.0", port=8000, reload=True)
 # Run with: uvicorn proxy:app --port 8000 --workers 1
