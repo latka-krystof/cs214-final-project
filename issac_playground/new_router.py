@@ -5,9 +5,9 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 # --- CONFIGURATION ---
-URL_SPECULATIVE = "http://localhost:8001/v1/completions"
-URL_STANDARD    = "http://localhost:8002/v1/completions"
-CONCURRENCY_THRESHOLD = 8
+URL_SPECULATIVE = "http://localhost:8002/v1/chat/completions"
+URL_STANDARD    = "http://localhost:8001/v1/chat/completions"
+CONCURRENCY_THRESHOLD = 10
 
 # --- GLOBAL STATE ---
 spec_count = 0
@@ -35,7 +35,7 @@ def choose_backend() -> tuple[str, str]:
             return URL_STANDARD, "standard"
 
 # --- MAIN ROUTE ---
-@app.post("/v1/completions")
+@app.post("/v1/chat/completions")
 async def smart_route(request: Request):
     global spec_count, std_count
 
@@ -45,10 +45,15 @@ async def smart_route(request: Request):
         return JSONResponse({"error": "Invalid JSON"}, status_code=400)
 
     target_url, mode = choose_backend()
+    
+    # Increment the appropriate counter
     if mode == "speculative":
         spec_count += 1
     else:
         std_count += 1
+
+    # Print current counters
+    print(f"[INFO] Speculative count: {spec_count}, Standard count: {std_count}")
 
     start = time.time()
     try:
@@ -67,10 +72,14 @@ async def smart_route(request: Request):
         return JSONResponse({"error": f"Backend failed: {exc}"}, status_code=502)
 
     finally:
+        # Decrement after request finishes
         if mode == "speculative":
             spec_count -= 1
         else:
             std_count -= 1
+
+        # Print counters after decrement (optional)
+        print(f"[INFO] After request: Speculative count: {spec_count}, Standard count: {std_count}")
 
 # --- STATS ---
 @app.get("/stats")

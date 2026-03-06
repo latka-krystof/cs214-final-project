@@ -4,8 +4,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-URL_SPECULATIVE = "http://localhost:8001/v1/completions"
-URL_STANDARD    = "http://localhost:8002/v1/completions"
+URL_SPECULATIVE = "http://localhost:8001/v1/chat/completions"
+URL_STANDARD    = "http://localhost:8002/v1/chat/completions"
 
 @asynccontextmanager
 async def lifespan(app):
@@ -17,7 +17,7 @@ async def lifespan(app):
 app = FastAPI(title="Random Router", lifespan=lifespan)
 
 
-@app.post("/v1/completions")
+@app.post("/v1/chat/completions")
 async def random_route(request: Request):
     try:
         payload = await request.json()
@@ -36,3 +36,8 @@ async def random_route(request: Request):
 
     except httpx.RequestError as exc:
         return JSONResponse({"error": f"Backend failed: {exc}"}, status_code=502)
+    
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("new_router:app", host="0.0.0.0", port=8000, reload=True)
