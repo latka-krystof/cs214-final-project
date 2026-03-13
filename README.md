@@ -1,4 +1,5 @@
-# LLM Router Experiment
+# Load-Adaptive Routing for Speculative Decoding LLMs
+
 
 This project evaluates different routing strategies for serving the Llama 3.2 3B Instruct model using speculative and regular inference servers.
 
