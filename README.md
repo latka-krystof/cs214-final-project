@@ -36,6 +36,7 @@ Enter your Hugging Face token.
 Run the benchmark script:
 
 ```bash
+cd benchmark
 python benchmark.py
 ```
 
@@ -92,7 +93,8 @@ Configuration: **1 Speculative Server + 1 Regular Server**
 Run the **1 speculative + 1 regular** configuration from:
 
 ```
-vllm.sh
+cd start_scripts
+llama.sh
 ```
 
 ### Step 2 — Start Router
@@ -121,7 +123,7 @@ Configuration: **1 Speculative Server + 1 Regular Server**
 Run the same configuration from:
 
 ```
-vllm.sh
+llama.sh
 ```
 
 ### Step 2 — Start Router
@@ -150,7 +152,7 @@ Configuration: **1 Regular Server + 1 Regular Server**
 Run the **2 regular servers** configuration from:
 
 ```
-vllm.sh
+llama.sh
 ```
 
 ### Step 2 — Start Router
